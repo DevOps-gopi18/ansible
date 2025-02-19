@@ -1,15 +1,29 @@
-- name: install nginx and run
-  hosts: local
-  connections: local
-  become: yes #-b, root access
+- name: install and run nginx
+  hosts: ansible
+  become: yes # -b
   tasks:
   - name: install nginx
-    ansible.bultin.package: #installing the nginx package
+    ansible.builtin.package:
       name: nginx
       state: present
   - name: start the nginx
-    ansible.builtin.service: #starting the nginx service
+    ansible.builtin.service:
       name: nginx
       state: started
-      enable: yes #enabling the nginx
+      enabled: yes
+
+# - name: install nginx and run
+#   hosts: local
+#   connections: local
+#   become: yes #-b, root access
+#   tasks:
+#   - name: install nginx
+#     ansible.bultin.package: #installing the nginx package
+#       name: nginx
+#       state: present
+#   - name: start the nginx
+#     ansible.builtin.service: #starting the nginx service
+#       name: nginx
+#       state: started
+#       enable: yes #enabling the nginx
 
