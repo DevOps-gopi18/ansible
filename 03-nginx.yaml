@@ -1,9 +1,9 @@
 # Installing nginx and starting the nginx service
-- name: Install nginx and enable
+- name: install nginx and run
   hosts: local
   connections: local
   become: yes #-b, root access
-  task:
+  tasks:
   - name: install nginx
     ansible.bultin.package: #installing the nginx package
       name: nginx
