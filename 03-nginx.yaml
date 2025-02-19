@@ -1,5 +1,5 @@
 - name: install and run nginx
-  hosts: ansible
+  hosts: 172.31.42.197
   become: yes # -b
   tasks:
   - name: install nginx
