@@ -6,11 +6,11 @@
   task:
   - name: install nginx
     ansible.bultin.package: #installing the nginx package
-    name: nginx
-    state: present
+      name: nginx
+      state: present
   - name: start the nginx
     ansible.builtin.service: #starting the nginx service
-    name: nginx
-    state: started
-    enable: yes #enabling the nginx
+      name: nginx
+      state: started
+      enable: yes #enabling the nginx
 
