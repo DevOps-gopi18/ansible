@@ -1,4 +1,3 @@
-# Installing nginx and starting the nginx service
 - name: install nginx and run
   hosts: local
   connections: local
