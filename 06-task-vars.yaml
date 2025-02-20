@@ -1,0 +1,16 @@
+- name: variables
+  hosts: web
+  vars: #paly level variables, global variables
+    COURSES: "Devops and cloud"
+    TIME: 120HRS
+    TRAINER: Gopi
+  tasks:
+  - name: print the variable
+    vars: #task level variables, accessible only with in the task.Task variables can be override play level variables
+      COURSES: ansible
+    ansible.builtin.debug:
+      msg: "course is {{ COURSES }} and timings are {{ TIME }} by {{ TRAINER }}"
+
+  - name: print the variable1
+    ansible.builtin.debug:
+      msg: "course is {{ COURSES }} and timings are {{ TIME }} by {{ TRAINER }}"
