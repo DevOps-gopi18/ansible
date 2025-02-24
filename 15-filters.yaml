@@ -3,4 +3,4 @@
   tasks:
   - name: handle undefined variables
     ansible.builtin.debug:
-      msg: "{{ person }}"
+      msg: "{{ person | default('gopi') }}"
