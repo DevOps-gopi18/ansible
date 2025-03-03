@@ -1,0 +1,21 @@
+- name: filters
+  hosts: web
+  tasks:
+  - name: handle undefined variables
+    ansible.builtin.debug:
+      msg: "{{ person | default('gopi') }}"
+
+  - name: convert string to list
+    vars:
+      fruits: "apple, banana, mango"
+    ansible.builtin.debug:
+      msg: "Fruits are: {{ fruits | split(',') }}"
+
+  - name: convert map to list
+    vars:
+      course:
+        name: ansible
+        duration: 10hrs
+        trainer: gopi
+    ansible.builtin.debug:
+      msg: "course info {{ course | dict2items}}"
