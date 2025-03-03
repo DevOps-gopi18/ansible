@@ -11,6 +11,14 @@
     - gopi2
     - gopi3
   tasks:
+  - name: install python dependences
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - boto3
+    - botocore
+
   - name: create ec2 instances
     amazon.aws.ec2_instance:
       name: "{{ item }}"
