@@ -1,0 +1,21 @@
+- name: create ec2 instances
+  hosts: local
+  connection: local
+  vars:
+    subnet_id: subnet-0524120d5b9400733
+    sg_id: sg-0472949340f70ee5a
+    image_id: ami-09c813fb71547fc4f
+    instance_type: t3.micro
+    instances:
+    - gopi1
+    - gopi2
+    - gopi3
+  tasks:
+  - name: create ec2 instances
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      subnet_id: "{{ subnet_id }}"
+      image_id: "{{ image_id }}"
+      instance_type: "{{ instance_type }}"
+      security_group: "{{ sg_id }}"
+    loop: "{{ instances }}"
