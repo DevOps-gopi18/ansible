@@ -4,3 +4,32 @@
   - name: print the facts
     ansible.builtin.debug:
       msg: "{{ ansible_facts }}"
+
+#---------------------
+- name: create EC2 instance
+  hosts: local
+  connection: local
+  vars:
+    subnet_id: "subnet-494jdfvkjfj"
+    ami_id: "ami-43jfdkfjsd"
+    image_id: "image-33jrjksddsi"
+    sg_id: "sg-9sjdsksdn"
+    instance_type: "t3.micro"
+    instances:
+    - gopi1
+    - gopi2
+    - gopi3
+  tasks:
+  - name: install python dependences
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - boto3
+    - botocore
+
+  - name: create ec2 instance
+    amazon.aws.ec2_instance:
+      subnet_id: "{{ subnet_id }}"
+    loop: "{{ instances }}"
+
